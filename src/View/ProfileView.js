@@ -7,10 +7,11 @@ export default function ProfileView() {
     const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
     const history = useHistory()
     useEffect(() => {
-        if(authenticatedUser != undefined){
+        if(authenticatedUser){
             alert(`Welcome ${authenticatedUser}`)
         }
         else{
+            alert('You must sign in')
             history.push('/')
         }
     }, [])
