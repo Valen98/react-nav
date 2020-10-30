@@ -1,18 +1,22 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
+import { useHistory } from 'react-router-dom'
+import { UserContext } from '../Shared/Global/Provider/UserProvider'
 
 export default function ProfileView() {
     const [count, setCount] = useState(0)
-
+    const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+    const history = useHistory()
     useEffect(() => {
-        alert("Component is rendering")
-    }, count)
-
+        if(authenticatedUser != undefined){
+            alert(`Welcome ${authenticatedUser}`)
+        }
+        else{
+            history.push('/')
+        }
+    }, [])
     return(
         <div>
-            <h1>Profile View</h1>
-            <button onClick={() => setCount(count +1)}> Add</button>
-            <h3>{count}</h3>
-            <button onClick={() => setCount(count -1)}>Minus</button>
+            <h1></h1>
         </div>
     )
 }

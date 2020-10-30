@@ -8,8 +8,9 @@ function App() {
     
     <UserProvider>
     <div className="App">
-      <Navbar/>
-      <Routing/>
+      <Routing>
+        <Navbar/>
+      </Routing>
     </div>
     </UserProvider>
 

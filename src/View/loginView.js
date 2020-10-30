@@ -20,17 +20,25 @@ function Login() {
         localStorage.setItem("username", input)
         history.push('/Granted')
     }
-
-    return (
-        <div className="wrapper">
-
-        <div className="login-div">
+    function checkIfUser(user){
+        if(user != undefined){
+            return(
+                <div className="login-div">
             <form onSubmit={handleSubmit} className="login-form">
                 <input placeholder="Username" type="username" className="Username" onChange={handleChange} value={input}></input>
                 <input placeholder="Password" type="password" className="Password"></input>
                 <button disabled={!validateForm()}onClick={handleSubmit}>Login</button>
             </form>
         </div>
+            )
+        }
+        else{
+            history.push('Granted')
+        }
+    }
+    return (
+        <div className="wrapper">
+            {checkIfUser(authenticatedUser)}
         </div>
     )
 }

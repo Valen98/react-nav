@@ -14,10 +14,10 @@ body {
     border:0px solid black;
 }
 .login-div{
-    margin:3px 0px;
+    margin:0px 0px;
     text-align: center;
     box-shadow: 1px 1px 1px 1px black;
-    background-color: #334333;
+    background-color:#1b2640;
     height: 300px;
     grid-column: 3;
     grid-row: 1;
