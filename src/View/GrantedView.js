@@ -1,12 +1,26 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import userProvider, { UserContext } from '../Shared/Global/Provider/UserProvider'
 import Trump from '../Shared/api/Service/TronaldDumpService'
+import { useHistory } from 'react-router-dom'
 
 function Granted() {
     const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
     const [apiStorage, setApiStorage] = useState()
+    const history = useHistory()
+    useEffect(() => {
+        if(localStorage.getItem('username') != ''){
+            if(apiStorage){
+                alert(apiStorage.data.value)
+            }else{  
+                document.title = 'press the quote button'
+            }
+        }else{
+            alert('You must Login')
+            history.push('/')
+        }
+    })
 
-    const handleSubmit = e => {
+    const handlePress = e => {
         e.preventDefault()
         Trump.SearchTrumpQuote()
         .then((response) => setApiStorage(response))
@@ -25,7 +39,7 @@ function Granted() {
     return (
         <div>
             <p>Signed in as: <b> {authenticatedUser} </b></p>
-            <button onClick={handleSubmit}>Get a Random Trump Quote</button>
+            <button onClick={handlePress}>Get a Random Trump Quote</button>
             {displayData()}
             
         </div>

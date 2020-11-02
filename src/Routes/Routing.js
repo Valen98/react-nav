@@ -3,7 +3,6 @@ import  {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import login from "../View/loginView"
 import Granted from '../View/GrantedView'
 import Profile from '../View/ProfileView'
-import { Navbar } from '../Component/Navbar/Navbar'
 import { UserContext, ApiContext } from '../Shared/Global/Provider/UserProvider'
 
 function Routing(props) {

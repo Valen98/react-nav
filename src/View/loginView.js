@@ -21,9 +21,10 @@ function Login() {
         history.push('/Granted')
     }
     function checkIfUser(user){
-        if(user != undefined){
+        if(user === ''){
             return(
                 <div className="login-div">
+                    <h1>Wazzup</h1>
             <form onSubmit={handleSubmit} className="login-form">
                 <input placeholder="Username" type="username" className="Username" onChange={handleChange} value={input}></input>
                 <input placeholder="Password" type="password" className="Password"></input>
@@ -38,7 +39,7 @@ function Login() {
     }
     return (
         <div className="wrapper">
-            {checkIfUser(authenticatedUser)}
+            {checkIfUser(localStorage.getItem('username'))}
         </div>
     )
 }

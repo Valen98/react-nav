@@ -7,17 +7,17 @@ export default function ProfileView() {
     const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
     const history = useHistory()
     useEffect(() => {
-        if(authenticatedUser){
-            alert(`Welcome ${authenticatedUser}`)
-        }
-        else{
-            alert('You must sign in')
+        if(localStorage.getItem("username") == ''){
+            alert('You must login')
             history.push('/')
         }
-    }, [])
+        else{
+            alert(`Welcome ${localStorage.getItem("username")}`)
+        }
+    })
     return(
         <div>
-            <h1></h1>
+            <h1>This is your Profile {localStorage.getItem('username')}</h1>
         </div>
     )
 }

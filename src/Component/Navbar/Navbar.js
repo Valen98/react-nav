@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Route, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import './Navbar.css'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { UserContext } from '../../Shared/Global/Provider/UserProvider'
@@ -12,7 +12,7 @@ export const Navbar = () => {
         history.push('/')
     }
     const handleLogout = e => {
-        setAuthenitcatedUser(false)
+        localStorage.setItem("username", '')
         history.push('/')
         console.log(authenticatedUser)
     }
@@ -34,7 +34,7 @@ export const Navbar = () => {
 
     return(
         <div className="navbar">
-            {authenticatedUser ? <p>Welcome {authenticatedUser}</p> : null}
+            {localStorage.getItem('username') ? <p>Welcome {localStorage.getItem('username')}</p> : null}
                 {logout(authenticatedUser)}
                
             <div className="hamburger">
